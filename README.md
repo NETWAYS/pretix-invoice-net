@@ -14,6 +14,14 @@ pip3 install /usr/src/pretix-invoice-net/
 
 Future plans involve publishing on pypi.python.org
 
+## Configuration
+
+Navigate into the admin control panel and choose your event.
+
+* `Settings > Plugins` and enable the plugin.
+* `Settings > Invoicing` and choose the NETWAYS renderer.
+
+
 ## Documentation
 
 https://docs.pretix.eu/en/latest/development/api/plugins.html
