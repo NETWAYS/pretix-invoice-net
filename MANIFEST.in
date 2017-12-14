@@ -1,0 +1,3 @@
+recursive-include pretix_invoice_net/static *
+recursive-include pretix_invoice_net/templates *
+recursive-include pretix_invoice_net/locale *
