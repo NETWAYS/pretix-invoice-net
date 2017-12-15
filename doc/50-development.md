@@ -52,8 +52,18 @@ python3 setup.py develop
 
 
 ```
-VERSION=0.0.1
+VERSION=0.0.2
+```
 
+```
+sed -i "s/version = '.*'/version = '$VERSION'/g" setup.py
+sed -i "s/archive\/.*'/archive\/v$VERSION.tar.gz'/g" setup.py
+
+git commit -av -m "Release v$VERSION"
+```
+
+
+```
 git tag -u D14A1F16 -m "Version $VERSION" v$VERSION
 ```
 
