@@ -1,9 +1,7 @@
 # Pretix Invoice Renderer Plugin for NETWAYS
 
-This is a plugin for [pretix](https://github.com/pretix/pretix) made for the NETWAYS environment.
-
-It adds a custom invoice renderer for NETWAYS hosted events.
-
+This plugin for [pretix](https://github.com/pretix/pretix) adds a custom
+invoice renderer for NETWAYS hosted events and conferences.
 
 ## Installation
 
@@ -19,8 +17,7 @@ Future plans involve publishing on pypi.python.org
 Navigate into the admin control panel and choose your event.
 
 * `Settings > Plugins` and enable the plugin.
-* `Settings > Invoicing` and choose the NETWAYS renderer.
-
+* `Settings > Invoicing` and choose the NETWAYS invoice renderer.
 
 ## Documentation
 
@@ -31,7 +28,7 @@ Invoice renderer is inspired by [upstream](https://github.com/pretix/pretix/blob
 ## Development setup
 
 1. Make sure that you have a working [pretix development setup](https://docs.pretix.eu/en/latest/development/setup.html).
-2. Clone this repository, eg to ``local/pretix-net``.
+2. Clone this repository, eg to ``local/pretix-invoice-net``.
 3. Activate the virtual environment you use for pretix development.
 4. Execute ``python setup.py develop`` within this directory to register this application with pretix's plugin registry.
 5. Execute ``make`` within this directory to compile translations.
