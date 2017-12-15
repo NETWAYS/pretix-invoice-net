@@ -10,12 +10,20 @@ Example order:
 
 ## Installation
 
+https://pypi.python.org/pypi/pretix-invoice-net
+
+### pip
+
+```
+pip install pretix-invoice-net
+```
+
+### Manual installation
+
 ```
 cp -rv pretix-invoice-net/* /usr/src/pretix-invoice-net/
 pip3 install /usr/src/pretix-invoice-net/
 ```
-
-Future plans involve publishing on pypi.python.org
 
 ## Configuration
 
@@ -45,11 +53,6 @@ Invoice renderer is inspired by [upstream](https://github.com/pretix/pretix/blob
 6. Restart your local pretix server. You can now use the plugin from this repository for your events by enabling it in
    the 'plugins' tab in the settings.
 
-### Create release tarball
-
-```
-python setup.py sdist
-```
 
 # Thanks
 

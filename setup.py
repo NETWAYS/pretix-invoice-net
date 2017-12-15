@@ -2,21 +2,25 @@ import os
 
 from setuptools import setup, find_packages
 
+# pypi doesn't like markdown, it needs RST.
+# https://stackoverflow.com/questions/26737222/pypi-description-markdown-doesnt-work
 try:
-    with open(os.path.join(os.path.dirname(__file__), 'README.md'), encoding='utf-8') as f:
-        long_description = f.read()
+    import pypandoc
+    long_description = pypandoc.convert('README.md', 'rst')
 except:
-    long_description = ''
+    long_description = open('README.md').read()
 
 setup(
-    name='pretix-invoice-net',
-    version='0.0.1',
-    description='Pretix invoice renderer plugin for NETWAYS',
-    long_description=long_description,
-    url='https://github.com/NETWAYS/pretix-invoice-net',
-    author='NETWAYS GmbH',
-    author_email='support@netways.de',
-    license='Apache Software License',
+    name = 'pretix-invoice-net',
+    version = '0.0.1',
+    description = 'Pretix invoice renderer plugin for NETWAYS',
+    long_description = long_description,
+    url = 'https://github.com/NETWAYS/pretix-invoice-net',
+    download_url = 'https://github.com/NETWAYS/pretix-invoice-net/archive/v0.0.1.tar.gz',
+    keywords = [ 'pretix', 'tickets', 'events', 'invoice', 'pdf' ],
+    author = 'NETWAYS GmbH',
+    author_email = 'support@netways.de',
+    license = 'Apache Software License',
 
     # pretix already depends on invoice related packages (reportlab, etc.)
     install_requires=[],
