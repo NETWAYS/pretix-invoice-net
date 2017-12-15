@@ -50,9 +50,8 @@ Raphael Michel for Pretix and the initial invoice renderer code, which is adopte
 
 # License
 
-
-Copyright 2017 Raphael Michel <mail@raphaelmichel.de>
 Copyright 2017 NETWAYS GmbH <support@netways.de>
+Copyright 2017 Raphael Michel <mail@raphaelmichel.de>
 
 The code in this repository is published under the terms of the Apache License.
 See the LICENSE file for the complete license text.
