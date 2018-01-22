@@ -152,14 +152,26 @@ class NetInvoiceRenderer(BaseReportlabInvoiceRenderer):
 
         canvas.drawText(textobject)
 
-        if self.invoice.event.settings.invoice_logo_image:
-            logo_file = self.invoice.event.settings.get('invoice_logo_image', binary_file=True)
+        # Right, Invoice and Event Logo
+        rightLogoX = 160 * mm
+
+        if self.invoice.event.settings.logo_image:
+            logo_file = self.invoice.event.settings.get('logo_image', binary_file=True)
             canvas.drawImage(ImageReader(logo_file),
-                             95 * mm, (297 - 38) * mm,
+                             rightLogoX, (297 - 38) * mm,
                              width=25 * mm, height=25 * mm,
                              preserveAspectRatio=True, anchor='n',
                              mask='auto')
 
+        if self.invoice.event.settings.invoice_logo_image:
+            logo_file = self.invoice.event.settings.get('invoice_logo_image', binary_file=True)
+            canvas.drawImage(ImageReader(logo_file),
+                             rightLogoX, (297 - 63) * mm,
+                             width=25 * mm, height=25 * mm,
+                             preserveAspectRatio=True, anchor='n',
+                             mask='auto')
+
+        # Right, Event
         if self.invoice.event.settings.show_date_to:
             p_str = (
                 str(self.invoice.event.name) + '\n' + pgettext('invoice', '{from_date}\nuntil {to_date}').format(
