@@ -1,6 +1,6 @@
 # Pretix Invoice Renderer for NETWAYS
 #
-# Copyright 2017 NETWAYS GmbH <support@netways.de>
+# Copyright 2018 NETWAYS GmbH <support@netways.de>
 # Copyright 2017 Raphael Michel <mail@raphaelmichel.de>
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -63,7 +63,7 @@ class NetInvoiceRenderer(BaseReportlabInvoiceRenderer):
         canvas.restoreState()
 
     def _on_first_page(self, canvas: Canvas, doc):
-        canvas.setCreator('netways.de')
+        canvas.setCreator('NETWAYS')
         canvas.setTitle(pgettext('invoice', 'Invoice {num}').format(num=self.invoice.number))
 
         canvas.saveState()
@@ -73,6 +73,7 @@ class NetInvoiceRenderer(BaseReportlabInvoiceRenderer):
         for i, line in enumerate(self.invoice.footer_text.split('\n')[::-1]):
             canvas.drawCentredString(self.pagesize[0] / 2, 25 + (3.5 * i) * mm, line.strip())
 
+        # Left, Invoice From
         textobject = canvas.beginText(25 * mm, (297 - 15) * mm)
         textobject.setFont('OpenSansBd', 8)
         textobject.textLine(pgettext('invoice', 'Invoice from').upper())
@@ -83,6 +84,7 @@ class NetInvoiceRenderer(BaseReportlabInvoiceRenderer):
         p_size = p.wrap(70 * mm, 50 * mm)
         p.drawOn(canvas, 25 * mm, (297 - 17) * mm - p_size[1])
 
+        # Left, Invoice To
         textobject = canvas.beginText(25 * mm, (297 - 50) * mm)
         textobject.setFont('OpenSansBd', 8)
         textobject.textLine(pgettext('invoice', 'Invoice to').upper())
@@ -93,7 +95,11 @@ class NetInvoiceRenderer(BaseReportlabInvoiceRenderer):
         p_size = p.wrap(85 * mm, 50 * mm)
         p.drawOn(canvas, 25 * mm, (297 - 52) * mm - p_size[1])
 
-        textobject = canvas.beginText(125 * mm, (297 - 38) * mm)
+
+        rightX = 95 * mm;
+
+        # Right, Order code
+        textobject = canvas.beginText(rightX, (297 - 38) * mm)
         textobject.setFont('OpenSansBd', 8)
         textobject.textLine(pgettext('invoice', 'Order code').upper())
         textobject.moveCursor(0, 5)
@@ -101,7 +107,8 @@ class NetInvoiceRenderer(BaseReportlabInvoiceRenderer):
         textobject.textLine(self.invoice.order.full_code)
         canvas.drawText(textobject)
 
-        textobject = canvas.beginText(125 * mm, (297 - 50) * mm)
+        # Right, * number
+        textobject = canvas.beginText(rightX, (297 - 50) * mm)
         textobject.setFont('OpenSansBd', 8)
         if self.invoice.is_cancellation:
             textobject.textLine(pgettext('invoice', 'Cancellation number').upper())
@@ -121,6 +128,7 @@ class NetInvoiceRenderer(BaseReportlabInvoiceRenderer):
             textobject.textLine(self.invoice.number)
         textobject.moveCursor(0, 5)
 
+        # Right, * date
         if self.invoice.is_cancellation:
             textobject.setFont('OpenSansBd', 8)
             textobject.textLine(pgettext('invoice', 'Cancellation date').upper())
@@ -166,9 +174,9 @@ class NetInvoiceRenderer(BaseReportlabInvoiceRenderer):
         p = Paragraph(p_str.strip().replace('\n', '<br />\n'), style=self.stylesheet['Normal'])
         p.wrapOn(canvas, 65 * mm, 50 * mm)
         p_size = p.wrap(65 * mm, 50 * mm)
-        p.drawOn(canvas, 125 * mm, (297 - 17) * mm - p_size[1])
+        p.drawOn(canvas, 95 * mm, (297 - 17) * mm - p_size[1])
 
-        textobject = canvas.beginText(125 * mm, (297 - 15) * mm)
+        textobject = canvas.beginText(rightX, (297 - 15) * mm)
         textobject.setFont('OpenSansBd', 8)
         textobject.textLine(pgettext('invoice', 'Event').upper())
         canvas.drawText(textobject)
@@ -212,6 +220,7 @@ class NetInvoiceRenderer(BaseReportlabInvoiceRenderer):
             story.append(Paragraph(self.invoice.introductory_text, self.stylesheet['Normal']))
             story.append(Spacer(1, 10 * mm))
 
+        # Table
         taxvalue_map = defaultdict(Decimal)
         grossvalue_map = defaultdict(Decimal)
 
