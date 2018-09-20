@@ -52,7 +52,7 @@ python3 setup.py develop
 
 
 ```
-VERSION=0.0.3
+VERSION=0.0.4
 ```
 
 ```
@@ -64,7 +64,7 @@ git commit -av -m "Release v$VERSION"
 
 
 ```
-git tag -u D14A1F16 -m "Version $VERSION" v$VERSION
+git tag -s -m "Version $VERSION" v$VERSION
 ```
 
 ```

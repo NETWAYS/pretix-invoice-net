@@ -12,11 +12,11 @@ except:
 
 setup(
     name = 'pretix-invoice-net',
-    version = '0.0.3',
+    version = '0.0.4',
     description = 'Pretix invoice renderer plugin for NETWAYS',
     long_description = long_description,
     url = 'https://github.com/NETWAYS/pretix-invoice-net',
-    download_url = 'https://github.com/NETWAYS/pretix-invoice-net/archive/v0.0.3.tar.gz',
+    download_url = 'https://github.com/NETWAYS/pretix-invoice-net/archive/v0.0.4.tar.gz',
     keywords = [ 'pretix', 'tickets', 'events', 'invoice', 'pdf' ],
     author = 'NETWAYS GmbH',
     author_email = 'support@netways.de',
