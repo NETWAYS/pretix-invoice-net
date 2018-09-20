@@ -267,7 +267,7 @@ class NetInvoiceRenderer(BaseReportlabInvoiceRenderer):
             total += line.gross_value
 
         tdata.append([
-            pgettext('invoice', 'Invoice total'), '', '', localize(total) + " " + self.invoice.event.currency
+            pgettext('invoice', 'Invoice total'), '', '', '', localize(total) + " " + self.invoice.event.currency
         ])
         colwidths = [a * doc.width for a in (.45, .10, .15, .15, .15)] #NET specific
         table = Table(tdata, colWidths=colwidths, repeatRows=1)
