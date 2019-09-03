@@ -11,7 +11,7 @@ class PluginApp(AppConfig):
         author = 'NETWAYS GmbH'
         description = ugettext_lazy('Pretix invoice renderer plugin for NETWAYS')
         visible = True
-        version = '1.0.0'
+        version = '1.0.1'
 
     def ready(self):
         from . import signals  # NOQA
