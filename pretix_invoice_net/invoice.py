@@ -73,6 +73,23 @@ class NetInvoiceRenderer(BaseReportlabInvoiceRenderer):
         for i, line in enumerate(self.invoice.footer_text.split('\n')[::-1]):
             canvas.drawCentredString(self.pagesize[0] / 2, 25 + (3.5 * i) * mm, line.strip())
 
+        # https://docs.pretix.eu/en/latest/api/resources/invoices.html
+        # https://docs.pretix.eu/en/latest/api/resources/orders.html
+        try:
+            vatId = self.invoice.order.invoice_address.vat_id
+
+            # NET specific for country vat IDs
+            if vatId and vatId.startswith("NL"):
+                vatIdFooterNL = "Reverse Charge: BTW Verlegd naar %s According to Art. 12. 3 WOB" % (vatId)
+
+                i += 1
+                canvas.drawCentredString(self.pagesize[0] / 2, 25 + (3.5 * i) * mm, vatIdFooterNL);
+                # DEBUG
+                #i += 1
+                #canvas.drawCentredString(self.pagesize[0] / 2, 25 + (3.5 * i) * mm, "DEBUG: %s" % (vatId));
+        except AttributeError:
+            pass
+
         # Left, Invoice From
         textobject = canvas.beginText(25 * mm, (297 - 15) * mm)
         textobject.setFont('OpenSansBd', 8)
