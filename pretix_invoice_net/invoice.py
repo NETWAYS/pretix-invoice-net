@@ -96,7 +96,7 @@ class NetInvoiceRenderer(BaseReportlabInvoiceRenderer):
         textobject.textLine(pgettext('invoice', 'Invoice from').upper())
         canvas.drawText(textobject)
 
-        p = Paragraph(self.invoice.invoice_from.strip().replace('\n', '<br />\n'), style=self.stylesheet['Normal'])
+        p = Paragraph(self.invoice.full_invoice_from.strip().replace('\n', '<br />\n'), style=self.stylesheet['Normal'])
         p.wrapOn(canvas, 70 * mm, 50 * mm)
         p_size = p.wrap(70 * mm, 50 * mm)
         p.drawOn(canvas, 25 * mm, (297 - 17) * mm - p_size[1])
