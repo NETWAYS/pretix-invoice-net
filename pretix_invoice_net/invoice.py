@@ -83,7 +83,7 @@ class NetInvoiceRenderer(BaseReportlabInvoiceRenderer):
                 vatIdFooterNL = "Reverse Charge: BTW Verlegd naar %s According to Art. 12. 3 WOB" % (vatId)
 
                 i += 1
-                canvas.drawCentredString(self.pagesize[0] / 2, 25 + (3.5 * i) * mm, vatIdFooterNL);
+                canvas.drawCentredString(self.pagesize[0] / 2, 40 + (3.5 * i) * mm, vatIdFooterNL);
                 # DEBUG
                 #i += 1
                 #canvas.drawCentredString(self.pagesize[0] / 2, 25 + (3.5 * i) * mm, "DEBUG: %s" % (vatId));
