@@ -52,7 +52,7 @@ python3 setup.py develop
 
 
 ```
-VERSION=0.0.4
+VERSION=1.0.2
 ```
 
 ```
