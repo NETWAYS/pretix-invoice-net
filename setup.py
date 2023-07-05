@@ -12,7 +12,7 @@ except:
 
 setup(
     name = 'pretix-invoice-net',
-    version = '1.0.2',
+    version = '1.0.4',
     description = 'Pretix invoice renderer plugin for NETWAYS',
     long_description = long_description,
     url = 'https://github.com/NETWAYS/pretix-invoice-net',
